@@ -6,12 +6,15 @@
     </head>
     <body>
         <div class="container">
-            <h1><center>Our cold options:</center></h2>
+            <h1><center>Our cold beverages:</center></h2>
+	    <form action="/addcart" method=post>
             {% for item in options%}
-            {{ item[0] }}:
-            {{ item[1] }}<br>
+            <input type=checkbox name=items value="{{ item[0] }}">
+	    <label for="{{ item[0] }}">{{ item[0] }}</label> ${{ item[1] }}<br>
             {% endfor %}
-            <button><a href="/">Homepage</a></button>
+	    <button type="submit">Add to cart</button>
+            <button style="float: right"><a href="/">Homepage</a></button>
+	    </form>
         </div>
     </body>
 </html>
