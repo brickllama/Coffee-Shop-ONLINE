@@ -5,10 +5,21 @@
     <link href="static/main.css" rel="stylesheet">
     </head>
     <body>
-        <div class="container">
-            <h1><center>Checkout</center></h2>
-            <p>WIP</p>
-            <button><a href="/">Homepage</a></button>
+        <div class="contafiner">
+            {{subtotal = 0}}
+            {% for i in items%}
+            {{subtotal += i[1]}}
+            {%endfor%}
+            {{tax = 0.1125 * subtotal}}
+            {{grand_total = subtotal + tax}}
+            {% for name, price in items%}
+            {{name}} ${{price}}
+            {%endfor%}
+            {{'**'*16}}<br>Subtotal ${{subtotal, 2}}<br>
+            Tax ${{tax, 2}}<br>Total ${{grand_total}}<br>
+            {{'**'*16}}<br>{{card}} {{payment_network}}<br>
+            APPROVED - PURCHASE<br>AMOUNT: ${{grand_total}}<br>
+            {{date}} {{time}}<br>{{'**'*16}}
         </div>
     </body>
 </html>
