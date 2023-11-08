@@ -8,8 +8,9 @@
         <div class="container">
             <h1><center>Our cold options:</center></h2>
             {% for item in options%}
-            {{ item }}
-            {% endfor %}<br>
+            {{ item[0] }}:
+            {{ item[1] }}<br>
+            {% endfor %}
             <button><a href="/">Homepage</a></button>
         </div>
     </body>

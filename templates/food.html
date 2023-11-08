@@ -8,9 +8,10 @@
         <div class="container">
             <h1><center>Our food options:</center></h2>
             {% for item in options%}
-            {{ item }}
-            {% endfor %}<br>
-            <button><a href="/">Homepage</a></button>
+            <button name="{{ item[0] }}">{{ item[0] }}</button>
+            {{ item[1] }}<br>
+            {% endfor %}
+            <button style="float: right"><a href="/">Homepage</a></button>
         </div>
     </body>
 </html>
