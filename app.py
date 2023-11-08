@@ -44,7 +44,14 @@ def checkout():
 
 @app.route('/addcart', methods=['GET', 'POST'])
 def addcart():
-    session['cart'] = request.values.getlist('items')
+    if 'cart' not in session:
+      session['cart'] = []
+    session['cart'] += request.values.getlist('items')
+    return render_template("cart.html", items=session['cart'])
+
+@app.route('/emptycart')
+def emptycart():
+    session['cart'] = []
     return render_template("cart.html", items=session['cart'])
 
 if __name__ == '__main__':
