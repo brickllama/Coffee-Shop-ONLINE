@@ -7,7 +7,8 @@ app.secret_key = 'pineapple'
 @app.route('/')
 def home():
     name = 'Nate'
-    return render_template("index.html", name=name)
+    date = Menu.date
+    return render_template("index.html", name=name, date=date)
 
 
 @app.route('/drinks')
@@ -40,7 +41,13 @@ def merch():
 
 @app.route('/checkout')
 def checkout():
-    return render_template("checkout.html")
+    date = Menu.date
+    time = Menu.time
+    card = Menu.blurred_card
+    payment_network = Menu.payment_network
+    return render_template("checkout.html", items=session['cart'], date=date,
+                           time=time, card=card,
+                           payment_network=payment_network)
 
 @app.route('/addcart', methods=['GET', 'POST'])
 def addcart():
@@ -53,6 +60,7 @@ def addcart():
 def emptycart():
     session['cart'] = []
     return render_template("cart.html", items=session['cart'])
+
 
 if __name__ == '__main__':
     app.run(debug=True)
