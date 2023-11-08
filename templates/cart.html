@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Flask cart</title>
+    <link href="static/main.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <h1><center>Your cart contains:</center></h2>
+	    <ul>{% for item in items %}
+		    <li>{{ item }}
+            {% endfor %}
+            <button style="float: right"><a href="/">Homepage</a></button>
+	    </form>
+        </div>
+    </body>
+</html>
