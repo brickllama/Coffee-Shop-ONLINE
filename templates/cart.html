@@ -7,10 +7,14 @@
     <body>
         <div class="container">
             <h1><center>Your cart contains:</center></h2>
+            {% if items|length > 0 %}
 	    <ul>{% for item in items %}
 		    <li>{{ item }}
             {% endfor %}
 	    </ul>
+            {% else %}
+            <h2>The cart is empty</h2>
+            {% endif %}
             <button><a href="/emptycart">empty cart</a></button>
             <button style="float: right"><a href="/">Homepage</a></button>
 	    </form>
