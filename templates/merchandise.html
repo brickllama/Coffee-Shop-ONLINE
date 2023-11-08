@@ -6,8 +6,11 @@
     </head>
     <body>
         <div class="container">
-            <h1><center>Our merch:</center></h2>
-            <p>WIP</p>
+            <h1><center>Our merchandise:</center></h2>
+            {% for item in options%}
+            {{ item }}
+            {% endfor %}<br>
+            <img src="static/sloth.jpg" alt="sloth">
             <button><a href="/">Homepage</a></button>
         </div>
     </body>
