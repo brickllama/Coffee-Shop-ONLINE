@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from Menu import Menu
 
 app = Flask(__name__)
 
@@ -16,22 +17,26 @@ def drinks():
 
 @app.route('/drinks/hot')
 def hotdrinks():
-    return render_template("hotdrinks.html")
+    options = Menu.hot_coffees + Menu.teas
+    return render_template("hotdrinks.html", options=options)
 
 
 @app.route('/drinks/cold')
 def colddrinks():
-    return render_template("colddrinks.html")
+    options = Menu.cold_coffees
+    return render_template("colddrinks.html", options=options)
 
 
 @app.route('/food')
 def food():
-    return render_template("food.html")
+    options = Menu.foods
+    return render_template("food.html", options=options)
 
 
 @app.route('/merchandise')
 def merch():
-    return render_template("merchandise.html")
+    options = Menu.merchandise
+    return render_template("merchandise.html", options=options)
 
 
 
