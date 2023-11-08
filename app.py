@@ -1,8 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session, request
 from Menu import Menu
 
 app = Flask(__name__)
-
+app.secret_key = 'pineapple'
 
 @app.route('/')
 def home():
@@ -38,12 +38,14 @@ def merch():
     options = Menu.merchandise
     return render_template("merchandise.html", options=options)
 
-
-
 @app.route('/checkout')
 def checkout():
     return render_template("checkout.html")
 
+@app.route('/addcart', methods=['GET', 'POST'])
+def addcart():
+    session['cart'] = request.values.getlist('items')
+    return render_template("cart.html", items=session['cart'])
 
 if __name__ == '__main__':
     app.run(debug=True)
