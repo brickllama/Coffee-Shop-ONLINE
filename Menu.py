@@ -1,9 +1,27 @@
+import random as rd
+from datetime import datetime
+
+
 class Menu:
     blurred_card: str = ''
     payment_network: str = ''
     date: str = ''
     time: str = ''
     business = "Nate's Coffee Shop"
+    # date and time
+    date = datetime.today()
+    date = date.strftime("%m/%d/%y")
+    time = datetime.now()
+    time = time.strftime("%H:%M")
+
+    # card details
+    digit = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    payment_network = ['VISA', 'MasterCard', 'AMEX', 'Discover']
+    credit_card = ''
+    for d in range(16):
+        credit_card += str(rd.choice(digit))
+    blurred_card = f"{'X' * 4} {'X' * 4} {'X' * 4} {credit_card[12:16]}"
+    payment_network = rd.choice(payment_network)
 
     hot_coffees = [
         ('Americano', 3.95),
