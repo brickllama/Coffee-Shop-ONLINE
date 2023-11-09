@@ -8,7 +8,7 @@
         <div class="container">
             <h1><center>Your cart contains:</center></h2>
             {% if items|length > 0 %}
-	    <ul>{% for item in items %}
+	    <ul>{% for id,category,item,price in items %}
 		    <li>{{ item }}
             {% endfor %}
 	    </ul>

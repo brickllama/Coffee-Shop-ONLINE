@@ -10,7 +10,7 @@
 	    <form action="/addcart" method=post>
             {% for item in options%}
             <input type=checkbox name=items value="{{ item[0] }}">
-	    <label for="{{ item[0] }}">{{ item[0] }}</label> ${{ item[1] }}<br>
+	    <label for="{{ item[0] }}">{{ item[2] }}</label> ${{ item[3] }}<br>
             {% endfor %}
 	    <button type="submit">Add to cart</button>
             <button style="float: right"><a href="/">Homepage</a></button>
