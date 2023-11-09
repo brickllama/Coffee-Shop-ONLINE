@@ -4,6 +4,7 @@ from Menu import Menu
 app = Flask(__name__)
 app.secret_key = 'pineapple'
 
+
 @app.route('/')
 def home():
     name = 'Nate'
@@ -39,6 +40,7 @@ def merch():
     options = Menu.merchandise
     return render_template("merchandise.html", options=options)
 
+
 @app.route('/checkout')
 def checkout():
     date = Menu.date
@@ -49,12 +51,14 @@ def checkout():
                            time=time, card=card,
                            payment_network=payment_network)
 
+
 @app.route('/addcart', methods=['GET', 'POST'])
 def addcart():
     if 'cart' not in session:
-      session['cart'] = []
+        session['cart'] = []
     session['cart'] += request.values.getlist('items')
     return render_template("cart.html", items=session['cart'])
+
 
 @app.route('/emptycart')
 def emptycart():
