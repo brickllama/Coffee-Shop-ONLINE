@@ -18,25 +18,25 @@ def drinks():
 
 @app.route('/drinks/hot')
 def hotdrinks():
-    options = Menu.hot_coffees + Menu.teas
+    options = [i for i in Menu.items if i[1] == Menu.category['hot_drinks'] or i[1] == Menu.category['teas']]
     return render_template("hotdrinks.html", options=options)
 
 
 @app.route('/drinks/cold')
 def colddrinks():
-    options = Menu.cold_coffees
+    options = [i for i in Menu.items if i[1] == Menu.category['cold_drinks']]
     return render_template("colddrinks.html", options=options)
 
 
 @app.route('/food')
 def food():
-    options = Menu.foods
+    options = [i for i in Menu.items if i[1] == Menu.category['food']]
     return render_template("food.html", options=options)
 
 
 @app.route('/merchandise')
 def merch():
-    options = Menu.merchandise
+    options = [i for i in Menu.items if i[1] == Menu.category['merch']]
     return render_template("merchandise.html", options=options)
 
 @app.route('/checkout')
@@ -45,7 +45,8 @@ def checkout():
     time = Menu.time
     card = Menu.blurred_card
     payment_network = Menu.payment_network
-    return render_template("checkout.html", items=session['cart'], date=date,
+    items = [i for i in Menu.items if str(i[0]) in session['cart'] ]
+    return render_template("checkout.html", items=items, date=date,
                            time=time, card=card,
                            payment_network=payment_network)
 
@@ -54,7 +55,9 @@ def addcart():
     if 'cart' not in session:
       session['cart'] = []
     session['cart'] += request.values.getlist('items')
-    return render_template("cart.html", items=session['cart'])
+    items = [i for i in Menu.items if str(i[0]) in session['cart'] ]
+    print(session['cart'])
+    return render_template("cart.html", items=items)
 
 @app.route('/emptycart')
 def emptycart():

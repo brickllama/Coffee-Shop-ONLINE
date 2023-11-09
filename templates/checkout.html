@@ -6,19 +6,21 @@
     </head>
     <body>
         <div class="receipt">
-            {{subtotal = 0}}
-            {% for i in items%}
-            {{subtotal += i[1]}}
-            {%endfor%}
-            {{tax = 0.1125 * subtotal}}
-            {{grand_total = subtotal + tax}}
-            {% for name, price in items%}
-            {{name}} ${{price}}
-            {%endfor%}
-            {{'**'*16}}<br>Subtotal ${{subtotal, 2}}<br>
-            Tax ${{tax, 2}}<br>Total ${{grand_total}}<br>
+            {% set ns = namespace(subtotal=0) -%}
+	    <table><tr><th>Item</th><th>Price</th></tr>
+            {% for id, category, name, price in items -%}
+            {% set ns.subtotal = ns.subtotal + price -%}
+	    <tr>
+	      <td>{{name}}</td>
+	      <td>${{price}}</td>
+            {% endfor -%}
+	    </table>
+            {% set tax = 0.1125 * ns.subtotal -%}
+            {% set grand_total = ns.subtotal + tax -%}
+            {{'**'*16}}<br>Subtotal ${{ns.subtotal|round(2)}}<br>
+            Tax ${{tax|round(2)}}<br>Total ${{grand_total|round(2)}}<br>
             {{'**'*16}}<br>{{card}} {{payment_network}}<br>
-            APPROVED - PURCHASE<br>AMOUNT: ${{grand_total}}<br>
+            APPROVED - PURCHASE<br>AMOUNT: ${{grand_total|round(2)}}<br>
             {{date}} {{time}}<br>{{'**'*16}}
         </div>
     </body>

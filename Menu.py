@@ -23,44 +23,42 @@ class Menu:
     blurred_card = f"{'X' * 4} {'X' * 4} {'X' * 4} {credit_card[12:16]}"
     payment_network = rd.choice(payment_network)
 
-    hot_coffees = [
-        ('Americano', 3.95),
-        ('Brewed Coffee', 2.95),
-        ('Cappuccino', 4.95),
-        ('Espresso', 2.75),
-        ('Latte', 3.45),
-        ('Macchiato', 2.85),
-        ('Mocha', 5.45)
-    ]
-    teas = [
-        ('Black Tea', 3.45),
-        ('Earl Grey', 3.45),
-        ('Peppermint Tea', 3.45),
-        ('Chai Tea', 3.45),
-        ('Matcha Tea Latte', 5.25)
-    ]
-    cold_coffees = [
-        ('Cold Brew', 4.45),
-        ('Iced Americano', 3.95),
-        ('Iced Coffee', 3.95),
-        ('Iced Shaken Espresso', 4.45),
-        ('Iced Latte', 4.95),
-        ('Iced Macchiato', 5.65),
-        ('Iced Mocha', 5.65)
-    ]
-    seasonal_beverages = [
-         'Christmas Drink or something'
-    ]
-    foods = [
-        ('Bagel', 2.65),
-        ('Everything Bagel', 2.65),
-        ('Cream Cheese', 0.95),
-    ]
-    merchandise = [
-        ('Sloth T-shirt', 15.00),
-        ('Reusable Cup', 5.00),
-        ('4pk Metal Straws', 4.25),
-        ('Sloth Plushie', 25.00)
+    category = {
+            'hot_coffee':1,
+            'teas':2,
+            'cold_coffee':3,
+            'seasonal_beverages':4,
+            'food':5,
+            'merch':6
+    }
+    items = [
+        (1,  1, 'Americano', 3.95),
+        (2,  1, 'Brewed Coffee', 2.95),
+        (3,  1, 'Cappuccino', 4.95),
+        (4,  1, 'Espresso', 2.75),
+        (5,  1, 'Latte', 3.45),
+        (6,  1, 'Macchiato', 2.85),
+        (7,  1, 'Mocha', 5.45),
+        (8,  2, 'Black Tea', 3.45),
+        (9,  2, 'Earl Grey', 3.45),
+        (10, 2, 'Peppermint Tea', 3.45),
+        (11, 2, 'Chai Tea', 3.45),
+        (12, 2, 'Matcha Tea Latte', 5.25),
+        (13, 3, 'Cold Brew', 4.45),
+        (14, 3, 'Iced Americano', 3.95),
+        (15, 3, 'Iced Coffee', 3.95),
+        (16, 3, 'Iced Shaken Espresso', 4.45),
+        (17, 3, 'Iced Latte', 4.95),
+        (18, 3, 'Iced Macchiato', 5.65),
+        (19, 3, 'Iced Mocha', 5.65),
+        (20, 4, 'Christmas Drink or something', 6.99),
+        (21, 5, 'Bagel', 2.65),
+        (22, 5, 'Everything Bagel', 2.65),
+        (23, 5, 'Cream Cheese', 0.95),
+        (24, 6, 'Sloth T-shirt', 15.00),
+        (25, 6, 'Reusable Cup', 5.00),
+        (26, 6, '4pk Metal Straws', 4.25),
+        (27, 6, 'Sloth Plushie', 25.00)
     ]
     shopping_cart = []
 
