@@ -19,13 +19,13 @@ def drinks():
 
 @app.route('/drinks/hot')
 def hotdrinks():
-    options = [i for i in Menu.items if i[1] == Menu.category['hot_drinks'] or i[1] == Menu.category['teas']]
+    options = [i for i in Menu.items if i[1] == Menu.category['hot_coffee'] or i[1] == Menu.category['teas']]
     return render_template("hotdrinks.html", options=options)
 
 
 @app.route('/drinks/cold')
 def colddrinks():
-    options = [i for i in Menu.items if i[1] == Menu.category['cold_drinks']]
+    options = [i for i in Menu.items if i[1] == Menu.category['cold_coffee']]
     return render_template("colddrinks.html", options=options)
 
 
